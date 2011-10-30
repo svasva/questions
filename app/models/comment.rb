@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :question
   validate :validate_parent
   validates_presence_of :question_id
+  validates_presence_of :body
 
   protected
 
