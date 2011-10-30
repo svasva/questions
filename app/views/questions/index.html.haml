@@ -16,15 +16,15 @@
 				Last questions
 				%small asked
 		.row
-			.span8
+			.span10
 				%h1 Open questions
 				- @open_questions.each do |q|
 					= render :partial => 'question', :locals => {:question => q}
 
-			.span8
-				%h1 Closed questions
+			.span4
+				%h4 Closed questions
 				- @closed_questions.each do |q|
 					= render :partial => 'question', :locals => {:question => q}
-					
+
 	%footer
 		%p &copy; made for testing purposes only
