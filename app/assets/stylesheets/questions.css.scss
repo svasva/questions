@@ -74,3 +74,11 @@ form {
 ul {
   margin-bottom: 5px;
 }
+
+.alert-message {
+  z-index: 999999999;
+  position: absolute;
+  top: 45px;
+  left: 20%;
+  right: 20%;
+}
