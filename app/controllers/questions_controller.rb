@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 		# TODO: add pagination, etc
 		
 		@open_questions = Question.open.all
-		@closed_questions = Question.closed.all
+		@closed_questions = Question.closed.all(:include => :comments)
 	end
 
 	def show
