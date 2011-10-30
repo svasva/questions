@@ -1,10 +1,30 @@
-.open_questions
-	.heading Open questions
+.topbar
+	.fill
+		.container
+			%a.brand(href='/') Questionnaire
+			%ul.nav
+				%li.active
+					%a(href='/') Home
+			= form_for :question, :html => { :class => 'pull-right' } do |form|
+				= form.text_field :body, :placeholder => 'Ask a question'
+				%button.btn(type='submit') Ask
+			
+.container
 	.content
-		- @open_questions.each do |q|
-			= render :partial => 'question', :locals => {:question => q}
-.closed_questions
-	.heading Closed questions
-	.content
-		- @closed_questions.each do |q|
-			= render :partial => 'question', :locals => {:question => q}
+		.page-header
+			%h1
+				Last questions
+				%small asked
+		.row
+			.span8
+				%h1 Open questions
+				- @open_questions.each do |q|
+					= render :partial => 'question', :locals => {:question => q}
+
+			.span8
+				%h1 Closed questions
+				- @closed_questions.each do |q|
+					= render :partial => 'question', :locals => {:question => q}
+					
+	%footer
+		%p &copy; made for testing purposes only
