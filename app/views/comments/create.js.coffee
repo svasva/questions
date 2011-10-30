@@ -6,10 +6,7 @@ if <%= @comment.valid? %>
 			.fadeIn()
 	)
 	$('.new_comment#c<%= @comment.question_id %>')[0].reset()
+	$.alertmsg("Comment posted successfully!", 'success')
 else
 	errors = "<%= @comment.errors.full_messages.join(',') %>"
-	msg = $('<div class="alert-message error fade in">')
-		.html("<a class='close' href='#'>×</a> Error posting question: #{errors}")
-	msg.appendTo $('.page-header')
-	msg.alert()
-	msg.fadeIn()
+	$.alertmsg("Error posting comment: #{errors}", 'error')

@@ -4,10 +4,7 @@ if <%= @question.valid? %>
 	  .prependTo('#closed_questions')
 	  .hide()
 	  .fadeIn()
+	$.alertmsg("Answer posted successfully!", 'success')
 else
 	errors = "<%= @question.errors.full_messages.join(',') %>"
-	msg = $('<div class="alert-message error fade in">')
-		.html("<a class='close' href='#'>×</a> Error posting question: #{errors}")
-	msg.appendTo $('.page-header')
-	msg.alert()
-	msg.fadeIn()
+	$.alertmsg("Error updating question: #{errors}", 'error')
