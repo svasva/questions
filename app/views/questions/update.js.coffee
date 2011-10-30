@@ -1,5 +1,5 @@
 if <%= @question.valid? %>
-	$('.open_question#<%= @question.id %>').fadeOut()
+	$('.question#q<%= @question.id %>').fadeOut()
 	$('<%= escape_javascript(render(:partial => @question))%>')
 	  .prependTo('#closed_questions')
 	  .hide()
