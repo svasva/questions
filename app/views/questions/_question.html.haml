@@ -1,4 +1,4 @@
-.question
+.question(id="#{question.id}" class="#{'open_question' unless question.answer}")
 	.body
 		%strong Q:
 		#{question.body}
@@ -6,7 +6,10 @@
 		.answer
 			%strong A:
 			#{question.answer}
+			= form_for question.comments.new, :remote => true do |form|
+				= form.text_field :body, :placeholder => 'Your comment here'
+				%button.btn(type='submit') Post
 	- else
-		= form_for question do |form|
+		= form_for question, :remote => true do |form|
 			= form.text_field :answer, :placeholder => 'Type an answer'
 			%button.btn(type='submit') Post
