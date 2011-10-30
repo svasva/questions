@@ -1,3 +1,12 @@
 .question
-  .body= question.body
-  .answer= question.answer
+	.body
+		%strong Q:
+		#{question.body}
+	- if question.answer
+		.answer
+			%strong A:
+			#{question.answer}
+	- else
+		= form_for question do |form|
+			= form.text_field :answer, :placeholder => 'Type an answer'
+			%button.btn(type='submit') Post
