@@ -1,0 +1,10 @@
+.open_questions
+	.heading Open questions
+	.content
+		- @open_questions.each do |q|
+			= render :partial => 'question', :locals => {:question => q}
+.closed_questions
+	.heading Closed questions
+	.content
+		- @closed_questions.each do |q|
+			= render :partial => 'question', :locals => {:question => q}
