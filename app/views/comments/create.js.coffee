@@ -1,4 +1,4 @@
-if <%= @comment.valid? %>
+if <%= @comment.valid?(:create) %>
 	$('.question#q<%= @comment.question_id%>').find('ul').append(
 		$('<li>')
 			.html('<%= escape_javascript(@comment.body) %>')
