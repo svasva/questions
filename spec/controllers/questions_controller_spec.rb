@@ -9,12 +9,20 @@ describe QuestionsController do
 
 	it 'should create a new question on POST data' do
 		post 'create', :question => { :body => 'Question1' }
+		assigns[:question].valid?.should == true
 		assigns[:question].body.should == 'Question1'
 		Question.count.should == 1
 	end
 
 	it 'should return Question instance with validation errors explained' do
 		post 'create'
+		assigns[:question].valid?.should == false
 		assigns[:question].errors.full_messages.first.should == "Body can't be blank"
+	end
+
+	it 'should update attributes on PUT update' do
+		q = Question.create(:body => 'testing')
+		put 'update', :id => q.id, :question => { :answer => 'success' }
+		q.reload.answer.should == 'success'
 	end
 end
