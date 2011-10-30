@@ -5,10 +5,10 @@
 			%ul.nav
 				%li.active
 					%a(href='/') Home
-			= form_for :question, :html => { :class => 'pull-right' } do |form|
+			= form_for :question, :html => { :class => 'pull-right', :id => 'new_question' }, :remote => true do |form|
 				= form.text_field :body, :placeholder => 'Ask a question'
 				%button.btn(type='submit') Ask
-			
+
 .container
 	.content
 		.page-header
