@@ -6,9 +6,16 @@
 		.answer
 			%strong A:
 			#{question.answer}
-			= form_for question.comments.new, :remote => true do |form|
-				= form.text_field :body, :placeholder => 'Your comment here'
-				%button.btn(type='submit') Post
+
+			.comments
+				Comments:
+				%ul
+					- question.comments.each do |comment|
+						%li= comment.body
+
+				= form_for [question, question.comments.build], :remote => true, :html => {:id => "c#{question.id}"} do |form|
+					= form.text_field :body, :placeholder => 'Type your comment here'
+					%button.btn(type='submit') Post
 	- else
 		= form_for question, :remote => true do |form|
 			= form.text_field :answer, :placeholder => 'Type an answer'
