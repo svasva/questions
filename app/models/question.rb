@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
 
 	# NOT optimized for performance
 	# TODO: we should have a bool variable like :closed and an index on it
+	default_scope order('id DESC')
 	scope :open, where(:answer => nil)
 	scope :closed, where('answer IS NOT NULL')
 end
