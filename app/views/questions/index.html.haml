@@ -18,13 +18,15 @@
 		.row
 			.span10
 				%h1 Open questions
-				- @open_questions.each do |q|
-					= render :partial => 'question', :locals => {:question => q}
+				#open_questions
+					- @open_questions.each do |q|
+						= render :partial => 'question', :locals => {:question => q}
 
-			.span4
+			.span6
 				%h4 Closed questions
-				- @closed_questions.each do |q|
-					= render :partial => 'question', :locals => {:question => q}
+				#closed_questions
+					- @closed_questions.each do |q|
+						= render :partial => 'question', :locals => {:question => q}
 
 	%footer
 		%p &copy; made for testing purposes only
