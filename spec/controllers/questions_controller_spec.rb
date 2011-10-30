@@ -9,14 +9,14 @@ describe QuestionsController do
 
 	it 'should create a new question on POST data' do
 		post 'create', :question => { :body => 'Question1' }
-		assigns[:question].valid?.should == true
+		assigns[:question].valid?(:create).should == true
 		assigns[:question].body.should == 'Question1'
 		Question.count.should == 1
 	end
 
 	it 'should return Question instance with validation errors explained' do
 		post 'create'
-		assigns[:question].valid?.should == false
+		assigns[:question].valid?(:create).should == false
 		assigns[:question].errors.full_messages.first.should == "Body can't be blank"
 	end
 
